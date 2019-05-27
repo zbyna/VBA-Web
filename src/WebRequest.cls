@@ -541,7 +541,7 @@ Public Property Get FormattedResource() As String
 
     ' Replace url segments
     For Each web_Segment In Me.UrlSegments.Keys
-        FormattedResource = VBA.Replace(FormattedResource, "{" & web_Segment & "}", WebHelpers.UrlEncode(Me.UrlSegments(web_Segment)))
+        FormattedResource = VBA.Replace(FormattedResource, "{" & web_Segment & "}", WorksheetFunction.EncodeURL(Me.UrlSegments(web_Segment)))
     Next web_Segment
 
     ' Add querystring
@@ -700,7 +700,7 @@ End Sub
 Public Sub AddCookie(Key As String, Value As Variant)
     Me.Cookies.Add WebHelpers.CreateKeyValue( _
         web_EncodeCookieName(Key), _
-        WebHelpers.UrlEncode(Value, EncodingMode:=UrlEncodingMode.CookieUrlEncoding) _
+        WorksheetFunction.EncodeURL(Value) _
     )
 End Sub
 

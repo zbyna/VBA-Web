@@ -1975,7 +1975,7 @@ Private Function web_GetUrlEncodedKeyValue(Key As Variant, Value As Variant, Opt
     End Select
 
     ' Url encode key and value (using + for spaces)
-    web_GetUrlEncodedKeyValue = UrlEncode(Key, EncodingMode:=EncodingMode) & "=" & UrlEncode(Value, EncodingMode:=EncodingMode)
+    web_GetUrlEncodedKeyValue = WorksheetFunction.EncodeURL(Key) & "=" & WorksheetFunction.EncodeURL(Value)
 End Function
 
 ''
